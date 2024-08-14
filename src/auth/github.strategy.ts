@@ -14,7 +14,7 @@ export class GitHubStrategy extends PassportStrategy(Strategy, 'github') {
     super({
       clientID: configService.get<string>('githubClientId'),
       clientSecret: configService.get<string>('githubClientSecret'),
-      callbackURL: 'https://critical-ardeen-xmentor-3c0812eb.koyeb.app/auth/github/callback',
+      callbackURL: 'https://xmbe.veridaq.com/auth/github/callback',
       scope: ['user', 'repo'],
     });
     console.log({
