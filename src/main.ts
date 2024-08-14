@@ -5,7 +5,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.enableCors({
-    origin: 'https://xmfe.veridaq.com',
+    origin: 'https://x-mentor-fe.vercel.app',
     credentials: true, 
   });
   

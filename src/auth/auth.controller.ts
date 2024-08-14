@@ -18,14 +18,7 @@ export class AuthController {
     try {
       const jwt = await this.authService.login(req.user);
 
-      res.cookie('authToken', jwt.access_token, {
-        httpOnly: true,
-        secure: true,
-        maxAge: 24 * 60 * 60 * 1000,
-        sameSite: 'None',
-      });
-
-      res.redirect(`https://xmfe.veridaq.com`);
+      res.redirect(`https://x-mentor-fe.vercel.app/signin?authToken=${jwt.access_token}`);
     } catch (err) {
       console.error('GitHub Auth Error:', err.message);
       res.status(500).json({ message: 'Internal Server Error' });

@@ -8,19 +8,20 @@ import { Request } from 'express';
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor() {
     super({
-      jwtFromRequest: ExtractJwt.fromExtractors([(req: Request) => {
-        let token: string | null = null;
-        if (req && req.cookies) {
-          token = req.cookies['authToken'];
-        }
-        return token;
-      }]),
+      jwtFromRequest: ExtractJwt.fromExtractors([
+        (request: Request) => {
+          const authHeader = request.headers.authorization;
+          if (!authHeader || !authHeader.startsWith('Bearer ')) {
+            return null;
+          }
+          return authHeader.split(' ')[1]; // Extract the token from the Bearer string
+        },
+      ]),
       ignoreExpiration: false,
       secretOrKey: jwtConstants.secret,
     });
   }
 
-  
   async validate(payload: any) {
     if (!payload) {
       throw new UnauthorizedException();
