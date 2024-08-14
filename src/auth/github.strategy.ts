@@ -9,12 +9,12 @@ import { AuthService } from './auth.service';
 export class GitHubStrategy extends PassportStrategy(Strategy, 'github') {
   constructor(
     private readonly authService: AuthService,
-    configService: ConfigService, // Inject ConfigService here
+    configService: ConfigService, 
   ) {
     super({
       clientID: configService.get<string>('githubClientId'),
       clientSecret: configService.get<string>('githubClientSecret'),
-      callbackURL: 'http://localhost:3000/auth/github/callback',
+      callbackURL: 'https://critical-ardeen-xmentor-3c0812eb.koyeb.app/auth/github/callback',
       scope: ['user', 'repo'],
     });
     console.log({
