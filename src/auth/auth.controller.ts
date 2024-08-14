@@ -4,7 +4,7 @@ import { AuthService } from './auth.service';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(private readonly authService: AuthService) { }
 
   @Get('github')
   @UseGuards(AuthGuard('github'))
@@ -20,8 +20,9 @@ export class AuthController {
 
       res.cookie('authToken', jwt.access_token, {
         httpOnly: true,
-        secure: true, // Set to true for HTTPS
-        maxAge: 24 * 60 * 60 * 1000, // 1 day
+        secure: true,
+        maxAge: 24 * 60 * 60 * 1000,
+        sameSite: 'None',
       });
 
       res.redirect(`https://xmfe.veridaq.com`);

@@ -6,7 +6,7 @@ async function bootstrap() {
 
   app.enableCors({
     origin: 'https://xmfe.veridaq.com',
-    credentials: true, // Allow cookies to be sent with requests
+    credentials: true, 
   });
   
   await app.listen(process.env.PORT);
