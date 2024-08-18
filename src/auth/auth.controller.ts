@@ -18,18 +18,7 @@ async githubAuthCallback(@Req() req, @Res() res) {
   try {
     const jwt = await this.authService.login(req.user);
 
-    // Send the JWT to the parent window using a script
-    const script = `
-      <script>
-        // Send the JWT to the parent window
-        window.opener.postMessage({ token: '${jwt.access_token}' }, 'https://congenial-potato-x5rgx975jvgp296vp-3000.app.github.dev');
-        // Close the popup window
-        window.close();
-      </script>
-    `;
-
-    // Respond with the script
-    res.send(script);
+    res.redirect(https://x-mentor-fe.vercel.app/signin?authToken=${jwt.access_token});
   } catch (err) {
     console.error('GitHub Auth Error:', err.message);
     res.status(500).json({ message: 'Internal Server Error' });
