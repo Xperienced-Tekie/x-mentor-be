@@ -5,7 +5,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.enableCors({
-    origin: 'https://congenial-potato-x5rgx975jvgp296vp-3000.app.github.dev',
+    origin: 'https://x-mentor-fe.vercel.app',
     credentials: true, 
   });
   
