@@ -18,7 +18,7 @@ async githubAuthCallback(@Req() req, @Res() res) {
   try {
     const jwt = await this.authService.login(req.user);
 
-    res.redirect(https://x-mentor-fe.vercel.app/signin?authToken=${jwt.access_token});
+    res.redirect(`https://x-mentor-fe.vercel.app/signin?authToken=${jwt.access_token}`);
   } catch (err) {
     console.error('GitHub Auth Error:', err.message);
     res.status(500).json({ message: 'Internal Server Error' });

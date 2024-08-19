@@ -6,6 +6,7 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { GitHubModule } from './github/github.module';
 import { AppService } from './app.service';
+import { CodeDemonModule } from './code-demon/codeDemon.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { AppService } from './app.service';
     AuthModule,
     UsersModule,
     GitHubModule,
+    CodeDemonModule,
   ],
   controllers: [AppController],
   providers: [AppService],

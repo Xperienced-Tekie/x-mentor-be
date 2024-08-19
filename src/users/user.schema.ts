@@ -13,6 +13,9 @@ export class User {
 
   @Prop({ required: true })
   accessToken: string;
+
+  @Prop({enum: ["freemium", "premium", "unlimited", "human mentor"]})
+  plan: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

@@ -7,8 +7,9 @@ import { User, UserDocument } from './user.schema';
 export class UsersService {
   constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
 
-  async findOneByGithubId(githubId: string): Promise<User | null> {
-    return this.userModel.findOne({ githubId }).exec();
+  async findOneByGithubId(githubId: string) {
+    // Find one user by GitHub ID and explicitly project _id if needed
+    return this.userModel.findOne({ githubId }).select('+_id').exec();
   }
 
   async create(userData: {
