@@ -10,7 +10,8 @@ export class CodeDemonController {
   @Get('saved-chats')
   async getSavedChats(@Req() req) {
     console.log(req);
-    const userId = req.user.id;
+    const userId = req.user.userId;
+    console.log("userId", userId)
     const savedChats = await this.codeDemonService.getSavedChat(userId);
     return { savedChats };
   }

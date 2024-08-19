@@ -14,7 +14,7 @@ export class CodeDemonService {
         const user = await this.usersService.findOneByGithubId(userId);
 
         if (!user) {
-            throw new Error('User not found');
+            return {message: 'User not found'};
         }
 
         if (user.plan === "freemium") {

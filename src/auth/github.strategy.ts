@@ -30,7 +30,7 @@ export class GitHubStrategy extends PassportStrategy(Strategy, 'github') {
       if (!user) {
         user = await this.authService.createUser(id, username, accessToken);
       }
-      return { userId: user._id, username, accessToken };
+      return { userId: user._id, githubId: id, username, accessToken };
     } catch (error) {
       console.error('Error in validate function:', error);
       throw error;
